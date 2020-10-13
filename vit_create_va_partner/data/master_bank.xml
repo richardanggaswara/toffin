@@ -1,0 +1,30 @@
+<odoo>
+	<data>
+		
+		<record id="master_bank_xendit_bri" model="master.bank.xendit">
+	        <field name="name">Bank Rakyat Indonesia (BRI)</field>
+        	<field name="bank_code">BRI</field>
+    	</record>
+
+    	<record id="master_bank_xendit_mandiri" model="master.bank.xendit">
+	        <field name="name">Bank Mandiri</field>
+        	<field name="bank_code">MANDIRI</field>
+    	</record>
+
+    	<record id="master_bank_xendit_bca" model="master.bank.xendit">
+	        <field name="name">Bank Central Asia (BCA)</field>
+        	<field name="bank_code">BCA</field>
+    	</record>
+
+    	<record id="master_bank_xendit_bni" model="master.bank.xendit">
+	        <field name="name">Bank Negara Indonesia (BNI)</field>
+        	<field name="bank_code">BNI</field>
+    	</record>
+
+    	<record id="master_bank_xendit_permata" model="master.bank.xendit">
+	        <field name="name">Bank Permata</field>
+        	<field name="bank_code">PERMATA</field>
+    	</record>
+
+	</data>
+</odoo>

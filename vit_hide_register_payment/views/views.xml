@@ -1,0 +1,24 @@
+<odoo>
+  <data>
+   <!-- <record id="view_hide_register_payment_invoice_form" model="ir.ui.view" >
+      <field name="name">view_hide_register_payment_invoice_form</field>
+      <field name="model">account.invoice</field>
+      <field name="inherit_id" ref="account.invoice_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//header/button[@name='127']" position="replace">
+          <button name="127" id="account_invoice_payment_btn" type="action" invisible="1" string="Register Payment" groups="account.group_account_invoice" class="oe_highlight"/>
+        </xpath>
+      </field>
+    </record>
+    <record id="view_hide_register_payment_invoice_supplier_form" model="ir.ui.view" >
+      <field name="name">view_hide_register_payment_invoice_supplier_form</field>
+      <field name="model">account.invoice</field>
+      <field name="inherit_id" ref="account.invoice_supplier_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//header/button[@name='127']" position="replace">
+          <button name="127" type="action" states="open" string="Register Payment" groups="account.group_account_invoice" class="oe_highlight" invisible="1"/>
+        </xpath>
+      </field>
+    </record>-->
+  </data>
+</odoo>

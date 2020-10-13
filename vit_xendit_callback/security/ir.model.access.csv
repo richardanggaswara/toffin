@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_vit_xendit_callback_vit_xendit_callback,vit_xendit_callback.vit_xendit_callback,model_vit_xendit_callback_vit_xendit_callback,,1,0,0,0

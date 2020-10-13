@@ -1,0 +1,54 @@
+# -*- coding: utf-8 -*-
+
+from odoo import models, fields, api, _
+import requests
+import simplejson
+import time
+from odoo.exceptions import UserError
+import logging
+_logger = logging.getLogger(__name__)
+
+class VAPartner(models.Model):
+	_inherit = 'res.partner'
+
+	va_number = fields.Text(string='VA Number', readonly=True)
+	va_external_id = fields.Text(string='VA External ID', readonly=True)
+	va_bank = fields.Selection([
+		('BRI','Bank Rakyat Indonesia (BRI)'),
+		('MANDIRI','Bank Mandiri'),
+		('BCA','Bank Central Asia (BCA)'),
+		('BNI','Bank Negara Indonesia (BNI)'),
+		('PERMATA','Bank Permata'),
+		],string='VA Bank')
+	amount = fields.Float()
+	merchant_code = fields.Text()
+	partner_res_id = fields.Text()
+	owner_res_id = fields.Text()
+	expiration_date_xendit = fields.Date()
+
+	@api.multi
+	def create_va(self):
+		if self.va_bank == False:
+			raise UserError(_('VA Bank harus diisi terlebih dahulu'))
+
+		test_xendit_toffin = "xnd_development_kdzbsTmz9p1JZUcs58mcjNCDMEI7RT8mH55NIjHFhuZ2XgJGcpBk44AeBRdu5zx"
+		xendit_url = "https://api.xendit.co/callback_virtual_accounts"
+
+		data = {
+			'external_id'	: 'fixed-va-' + time.strftime('%Y%m%d%H%M%S'),
+			'bank_code'	: self.va_bank,
+			'name'		: self.name,
+		}
+
+		r = requests.post(xendit_url, data=data, auth=(test_xendit_toffin, ''))
+		res = simplejson.loads(r.text)
+		_logger.info(res)
+		_logger.info(res['external_id]','===================')
+		merchant_code
+                self.va_external_id = res['external_id']
+		self.va_number = res['account_number']
+		#self.amount = 80000
+		self.merchant_code = res['merchant_code']
+		self.partner_res_id = res['id']
+		self.owner_res_id = res['owner_id']
+		self.expiration_date_xendit = res['expiration_date']

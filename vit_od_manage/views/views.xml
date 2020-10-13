@@ -1,0 +1,17 @@
+<odoo>
+  <data>
+
+    <record model="ir.ui.view" id="view_inherit_marketing_fee_form">
+      <field name="name">view_inherit_marketing_fee_form.form</field>
+      <field name="model">sale.order</field>
+      <field name="inherit_id" ref="sale.view_order_form"/>
+
+      <field name="arch" type="xml">
+        <field name="partner_id" position="after">
+          <field name="od_id" />
+        </field>
+      </field>
+    </record>
+
+  </data>
+</odoo>

@@ -1,0 +1,45 @@
+<odoo>
+  <data>
+
+
+	<!-- Notebook Create Va -->
+	<record model="ir.ui.view" id="view_inherit_notebook_va_partner_form">
+	  <field name="name">view_inherit_notebook_va_partner_form</field>
+	  <field name="model">res.partner</field>
+	  <field name="inherit_id" ref="base.view_partner_form"/>
+
+	  <field name="arch" type="xml">
+	  	<field name="lang" position="after">
+          <field name="is_create_va" invisible="1" />
+        </field>
+
+		<xpath expr="//notebook" position="inside">
+			<page name="internal_notes" string="Virtual Account" attrs="{'invisible': [('is_create_va','=',False)]}">
+				<field name="partner_va_ids">
+					<tree string="Partner VA" editable="bottom" create="false" delete="false">
+						<field name="va_bank" />
+						<field name="va_number" />
+					</tree>
+				</field>
+			</page>
+		</xpath>
+	  </field>
+	</record>
+
+
+	<!-- Button Create VA -->
+	<record model="ir.ui.view" id="view_inherit_button_va_partner_form">
+		<field name="name">view_inherit_button_va_partner_form</field>
+		<field name="model">res.partner</field>
+		<field name="inherit_id" ref="base.view_partner_form"/>
+
+		<field name="arch" type="xml">
+			<xpath expr="//button[@name='toggle_active']" position="after">
+				<button class="oe_stat_button" attrs="{'invisible': [('is_create_va','=',True)]}" string="Create VA" type="object" name="create_va" icon="fa-credit-card" />
+			</xpath>
+		</field>
+	</record>
+
+
+  </data>
+</odoo>

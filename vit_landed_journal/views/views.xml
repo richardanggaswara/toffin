@@ -1,0 +1,30 @@
+<odoo>
+  <data>
+    <record model="ir.ui.view" id="view_inherit_marketing_fee_invoice_form">
+      <field name="name">view_inherit_marketing_fee_invoice_form.form</field>
+      <field name="model">account.invoice</field>
+      <field name="inherit_id" ref="account.invoice_supplier_form"/>
+      <field name="arch" type="xml">
+        <notebook position="inside">
+          <page string="Expenses">
+            <field name="account_line_ids" >
+              <!-- mode="kanban" -->
+              <tree editable="bottom">
+                <field name="account_id" string="Account ID"/>
+                <field name="amount" string="Amount"/>
+                <field name="note" string="Notes"/>
+                <field name="apply_items" string="Apply to Items"/>
+                <field name="other_vendor" string="To other Vendors"/>
+                <field name="vendor_landed" string="Vendor" attrs="{'invisible':[('other_vendor','!=',True)]}"/>
+              </tree>
+              
+            </field>
+          <!--   <group>
+              
+            </group> -->
+          </page>
+        </notebook>
+      </field>
+    </record>
+  </data>
+</odoo>

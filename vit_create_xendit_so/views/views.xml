@@ -1,0 +1,38 @@
+<odoo>
+	<data>
+
+
+		<record model="ir.ui.view" id="view_inherit_xendit_so_form">
+			<field name="name">view_inherit_xendit_so_form.form</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_order_form"/>
+			
+			<field name="arch" type="xml">
+				
+				<xpath expr="//sheet/group/group[2]/field[@name='payment_term_id']" position="after">
+					<field name="payment_type" invisible="1"/>
+				</xpath>
+
+				<notebook position="inside">
+					<page string="Xendit Information">
+						<field name="xendit_info_ids">
+							<tree create="false" delete="false">
+								<field name="created" />
+								<field name="bank_code" />
+								<field name="va_number" />
+								<field name="account_so_url" />
+								<button name="redirect" type="object" icon="fa-globe"/>
+							</tree>
+						</field>
+					</page>
+				</notebook>
+
+				<xpath expr="//header/button['action_quotation_send']" position="after">
+					<button name="action_create_xendit_so" string="Create Payment Link" type="object" states="sent,sale" class="btn-primary"/>
+				</xpath>
+
+			</field>
+		</record>
+
+	</data>
+</odoo>
